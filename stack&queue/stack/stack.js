@@ -30,11 +30,12 @@ class Stack {
   }
   print() {
     if (this.isEmpty()) return "Stack is empty";
+    let arr = [];
     for (let i = 0; i <= this.top; i++) {
-      console.log(this.data[i]);
+      arr.push(this.data[i]);
     }
+    return arr.join("");
   }
 }
-const stack = new Stack();
 
-module.exports = stack;
+module.exports = Stack;
