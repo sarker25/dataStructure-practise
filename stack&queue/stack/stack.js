@@ -23,18 +23,18 @@ class Stack {
   }
   peek() {
     if (this.isEmpty()) {
-      console.log("Stack is Empty");
+      return "Stack is Empty";
     } else {
-      console.log(this.data[this.top]);
+      return this.data[this.top];
     }
   }
   print() {
-    if (this.isEmpty()) return console.log("Stack is empty");
+    if (this.isEmpty()) return "Stack is empty";
     for (let i = 0; i <= this.top; i++) {
       console.log(this.data[i]);
     }
   }
 }
-const stack1 = new Stack();
+const stack = new Stack();
 
-module.exports = stack1;
+module.exports = stack;
