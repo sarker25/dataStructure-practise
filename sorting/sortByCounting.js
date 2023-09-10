@@ -8,28 +8,9 @@ function countingSort(arr) {
     map[val] = map[val] ? map[val] + 1 : 1;
   }
   let sorted = [];
-  let sortByKeys = Object.keys(map).sort((a, b) => a - b);
-  for (key of sortByKeys) {
-    for (let i = 0; i < map[key]; i++) {
-      sorted.push(parseInt(key));
-    }
+  for (let val of Object.entries(map)) {
+    sorted.push(val);
   }
-  console.log(sorted.join(" "));
+  return sorted.map((x) => x[0]).join(" ");
 }
-countingSort(arr);
-// time limit exceed
-// function countingSort(arr) {
-//   let map = {};
-//   for (val of arr) {
-//     map[val] = map[val] ? map[val] + 1 : 1;
-//   }
-//   let sorted = [];
-
-//   for (let i = 0; i < arr.length; i++) {
-//     let min = Math.min(...arr);
-//     sorted.push(min);
-//     arr.splice(arr.indexOf(min), 1);
-//   }
-//   console.log(sorted.join(" "));
-// }
-// countingSort(arr);
+console.log(countingSort(arr));
