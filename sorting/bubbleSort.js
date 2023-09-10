@@ -1,20 +1,20 @@
+const swap = (arr, idx1, idx2) => {
+  [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
+};
 function bubbleSort(arr) {
-  const n = arr.length;
-  let swapped;
-
-  do {
-    swapped = false;
-
-    for (let i = 0; i < n - 1; i++) {
-      if (arr[i] > arr[i + 1]) {
-        // Swap arr[i] and arr[i+1]
-        const temp = arr[i];
-        arr[i] = arr[i + 1];
-        arr[i + 1] = temp;
-        swapped = true;
+  for (let i = arr.length; i > 0; i--) {
+    let noSwap = true;
+    for (let j = 0; j < i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        swap(arr, j, j + 1);
+        noSwap = false;
       }
     }
-  } while (swapped);
+    if (noSwap) {
+      break;
+    }
+  }
 
-  return arr;
+  console.log(arr);
 }
+bubbleSort([8, 1, 2, 3, 4, 5, 6, 7]);
