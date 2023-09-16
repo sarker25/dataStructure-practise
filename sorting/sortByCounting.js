@@ -1,16 +1,39 @@
-let input = "5\n10 8 14 3 10";
-let inputs = input.split("\n");
-let n = parseInt(inputs[0]);
-let arr = inputs[1].split(" ").map((x) => parseInt(x));
 function countingSort(arr) {
-  let map = {};
-  for (val of arr) {
-    map[val] = map[val] ? map[val] + 1 : 1;
+  if (arr.length <= 1) {
+    return arr;
   }
-  let sorted = [];
-  for (let val of Object.entries(map)) {
-    sorted.push(val);
+
+  // Find the maximum value in the array
+  let maxVal = arr[0];
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] > maxVal) {
+      maxVal = arr[i];
+    }
   }
-  return sorted.map((x) => x[0]).join(" ");
+
+  // Create a counting array to store the frequency of each value
+  const count = new Array(maxVal + 1).fill(0);
+
+  // Count the occurrences of each value in the input array
+  for (let i = 0; i < arr.length; i++) {
+    count[arr[i]]++;
+  }
+
+  // Create an output array to store the sorted values
+  const output = [];
+
+  // Reconstruct the sorted array from the counting array
+  for (let i = 0; i <= maxVal; i++) {
+    while (count[i] > 0) {
+      output.push(i);
+      count[i]--;
+    }
+  }
+
+  return output;
 }
-console.log(countingSort(arr));
+
+// Example usage:
+const arr = [4, 2, 2, 8, 3, 3, 1];
+const sortedArr = countingSort(arr);
+console.log(sortedArr);
