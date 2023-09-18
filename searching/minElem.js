@@ -18,4 +18,4 @@ function findMin(nums) {
 // Example usage:
 const nums = [11, 13, 15, 17]; // Example input
 const min = findMin(nums);
-console.log("Minimum element:", min); // Output: Minimum element: 0
+console.log("Minimum element:", min); // Output: Minimum element: 11
